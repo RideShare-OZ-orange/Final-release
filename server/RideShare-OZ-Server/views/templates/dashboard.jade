@@ -1,0 +1,159 @@
+.row.alerts-container(data-ng-controller='AlertsCtrl', data-ng-show='alerts.length')
+  .col-xs-12
+    alert(data-ng-repeat='alert in alerts', type='{{alert.type}}', close='closeAlert($index)') {{alert.msg}}
+//- .row
+  //- .col-lg-3.col-md-6.col-xs-12
+    //- rd-widget
+      //- rd-widget-body
+        //- .widget-icon.green.pull-left
+          //- i.fa.fa-users
+        //- .title 80
+        //- .comment Users
+  //- .col-lg-3.col-md-6.col-xs-12
+    //- rd-widget
+      //- rd-widget-body
+        //- .widget-icon.red.pull-left
+          //- i.fa.fa-tasks
+        //- .title 16
+        //- .comment Servers
+  //- .col-lg-3.col-md-6.col-xs-12
+    //- rd-widget
+      //- rd-widget-body
+        //- .widget-icon.orange.pull-left
+          //- i.fa.fa-sitemap
+        //- .title 225
+        //- .comment Documents
+  //- .col-lg-3.col-md-6.col-xs-12
+    //- rd-widget
+      //- rd-widget-body
+        //- .widget-icon.blue.pull-left
+          //- i.fa.fa-support
+        //- .title 62
+        //- .comment Tickets
+//- .row
+  //- .col-lg-6
+    //- rd-widget
+      //- rd-widget-header(icon='fa-tasks', title='Servers')
+        //- a(href='#') Manage
+      //- rd-widget-body(classes='medium no-padding')
+        //- .table-responsive
+          //- table.table
+            //- tbody
+              //- tr
+                //- td RDVMPC001
+                //- td 238.103.133.37
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDVMPC002
+                //- td 68.66.63.170
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDVMPC003
+                //- td 76.117.212.33
+                //- td
+                  //- span.text-danger(tooltip='Server Down!')
+                    //- i.fa.fa-warning
+              //- tr
+                //- td RDPHPC001
+                //- td 91.88.224.5
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDESX001
+                //- td 197.188.15.93
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDESX002
+                //- td 168.85.154.251
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDESX003
+                //- td 209.25.191.61
+                //- td
+                  //- span.text-danger(tooltip='Server Down!')
+                    //- i.fa.fa-warning
+              //- tr
+                //- td RDESX004
+                //- td 252.37.192.235
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDTerminal01
+                //- td 139.71.18.207
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+              //- tr
+                //- td RDTerminal02
+                //- td 136.80.122.212
+                //- td
+                  //- span.text-warning(tooltip='Could not connect!')
+                    //- i.fa.fa-flash
+              //- tr
+                //- td RDDomainCont01
+                //- td 196.80.245.33
+                //- td
+                  //- span.text-success
+                    //- i.fa.fa-check
+  //- .col-lg-6
+    //- rd-widget
+      //- rd-widget-header(icon='fa-users', title='Users')
+        //- input.form-control.input-sm(type='text', placeholder='Search')
+      //- rd-widget-body(classes='medium no-padding')
+        //- .table-responsive
+          //- table.table
+            //- thead
+              //- tr
+                //- th.text-center ID
+                //- th Username
+                //- th Role
+                //- th Account
+            //- tbody
+              //- tr
+                //- td.text-center 1
+                //- td Joe Bloggs
+                //- td Super Admin
+                //- td AZ23045
+              //- tr
+                //- td.text-center 2
+                //- td Timothy Hernandez
+                //- td Admin
+                //- td AU24783
+              //- tr
+                //- td.text-center 3
+                //- td Joe Bickham
+                //- td User
+                //- td AM23781
+      //- rd-widget
+//- .row
+  //- .col-lg-6
+    //- rd-widget
+      //- rd-widget-header(icon='fa-plus', title='Extras')
+        //- button.btn.btn-sm.btn-info Button
+      //- rd-widget-body
+        //- .message
+          //- | This is a standard message which will also work the ".no-padding" class, I can also 
+          //- span.error be an error message!
+        //- hr
+        //- .message
+          //- a(href='http://angular-ui.github.io/bootstrap/', target='_blank') UI Bootstrap
+          //- |  is included, so you can use 
+          //- a(href='#', tooltip="I'm a tooltip!") tooltips
+          //- |  and all of the other native Bootstrap JS components!
+  //- .col-lg-6
+    //- rd-widget
+      //- rd-widget-header(icon='fa-cog fa-spin', title='Loading Directive')
+        //- a(href='http://tobiasahlin.com/spinkit/', target='_blank') SpinKit
+      //- rd-widget-body
+        //- rd-loading
+

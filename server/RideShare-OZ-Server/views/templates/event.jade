@@ -1,0 +1,31 @@
+.row(ng-controller='EventCtrl')
+  .col-lg-12
+    rd-widget
+      rd-widget-header(icon='fa-tasks', title='Events')
+        a(href="javascript:void(0)", ng-click="newEvent();") Create
+        
+      rd-widget-body(classes='xlarge no-padding')
+        .table-responsive
+          table.table.table-hover
+            tbody
+              tr(dir-paginate="event in events | itemsPerPage: eventPageSize", current-page="eventCurrentPage", pagination-id="event", ng-click="")
+                td
+                  span(editable-text='event.eventName', onbeforesave="checkData(1, $data)", onaftersave="update($index)") {{event.eventName}}
+                td 
+                  span(editable-text='event.eventLocation[0]', onbeforesave="checkData(2, $data)", onaftersave="update($index)") {{event.eventLocation[0]}}
+                td 
+                  span(editable-text='event.eventLocation[1]', onbeforesave="checkData(3, $data)", onaftersave="update($index)") {{event.eventLocation[1]}}
+                td
+                  span(editable-text='event.location', onaftersave="update($index)") {{event.location}}
+                td
+                  span(editable-date='event.startTime', onaftersave="update($index)") {{event.startTime}}
+                td
+                  span(editable-date='event.endTime', onaftersave="update($index)") {{event.endTime}}
+                td(colspan="3", style="white-space: nowrap;text-overflow: ellipsis;")
+                  textarea(editable-textarea='event.eventInfo', onbeforesave="checkData(4, $data)", onaftersave="update($index)") {{event.eventInfo}}
+                td(ng-click="deleteEvent($index);",)
+                  span.text-danger(tooltip='Delete')
+                    i.fa.fa-times
+      rd-widget-footer
+        dir-pagination-controls(boundary-links="true", on-page-change="pageChangeHandler(newPageNumber)", template-url="templates/dirPaginationTpl", pagination-id="event")
+        .clearfix

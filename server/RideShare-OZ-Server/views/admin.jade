@@ -1,0 +1,108 @@
+doctype html
+html(lang='en', ng-app='RDash')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title #{title}
+    // STYLES
+    // build:css lib/css/main.min.css
+    link(rel='stylesheet', type='text/css', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='bower_components/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='bower_components/rdash-ui/dist/css/rdash.min.css')
+    link(rel='stylesheet', type='text/css', href='bower_components/angular-xeditable/dist/css/xeditable.css')
+    // endbuild
+    // SCRIPTS
+    // build:js lib/js/main.min.js
+    script(type='text/javascript', src='bower_components/angular/angular.min.js')
+    script(type='text/javascript', src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+    script(type='text/javascript', src='bower_components/angular-cookies/angular-cookies.min.js')
+    script(type='text/javascript', src='bower_components/angular-ui-router/release/angular-ui-router.min.js')
+    script(type='text/javascript', src='bower_components/angular-utils-pagination/dirPagination.js')
+    script(type='text/javascript', src='bower_components/angular-xeditable/dist/js/xeditable.js')
+    // endbuild
+    // Custom Scripts
+    script(type='text/javascript', src='javascripts/module.js')
+    script(type='text/javascript', src='javascripts/routes.js')
+    script(type='text/javascript', src='javascripts/controllers.js')
+    script(type='text/javascript', src='javascripts/factories.js')
+    script(type='text/javascript', src='javascripts/directives/loading.js')
+    script(type='text/javascript', src='javascripts/directives/widget.js')
+    script(type='text/javascript', src='javascripts/directives/widget-body.js')
+    script(type='text/javascript', src='javascripts/directives/widget-footer.js')
+    script(type='text/javascript', src='javascripts/directives/widget-header.js')
+  body(ng-controller='MasterCtrl')
+    #page-wrapper(ng-class="{'open': toggle}", ng-cloak)
+      // Sidebar
+      #sidebar-wrapper
+        ul.sidebar
+          li.sidebar-main
+            a(ng-click='toggleSidebar()')
+              | Dashboard
+              span.menu-icon.glyphicon.glyphicon-transfer
+          li.sidebar-title
+            span NAVIGATION
+          li.sidebar-list
+            a(href='#')
+              | Dashboard
+              span.menu-icon.fa.fa-tachometer
+          li.sidebar-list
+            a(href='#/group')
+              | Group
+              span.menu-icon.fa.fa-table
+          li.sidebar-list
+            a(href='#/event')
+              | Event
+              span.menu-icon.fa.fa-th-list
+          //- li.sidebar-list
+            //- a(href='#/user')
+              //- | User
+              //- span.menu-icon.fa.fa-user
+        .sidebar-footer
+          .col-xs-4
+            a(href='https://github.com/RideShare-OZ-orange/RideShare-OZ-Orange-publish', target='_blank')
+              | Github
+          .col-xs-4
+            a(href='https://github.com/RideShare-OZ-orange/RideShare-OZ-Orange-publish/blob/master/README.md', target='_blank')
+              | About
+          .col-xs-4
+            a(href='#')
+              | Support
+      // End Sidebar
+      #content-wrapper
+        .page-content
+          // Header Bar
+          .row.header
+            .col-xs-12
+              .user.pull-right
+                .item.dropdown
+                  a.dropdown-toggle(href='#')
+                    img(src='images/avatar.jpg')
+                  ul.dropdown-menu.dropdown-menu-right
+                    li.dropdown-header
+                      //- | #{user}
+                      span(id='loggedUser') #{user}
+                    li.divider
+                    li.link
+                      a(href='#')
+                        | Profile
+                    li.divider
+                    li.link
+                      a(href='/logout')
+                        | Logout
+                .item.dropdown
+                  a.dropdown-toggle(href='#')
+                    i.fa.fa-bell-o
+                  ul.dropdown-menu.dropdown-menu-right
+                    li.dropdown-header
+                      | Notifications
+                    li.divider
+                    li
+                      a(href='#') Server Down!
+              .meta
+                .page
+                  | Dashboard
+                .breadcrumb-links
+                  | Home / Dashboard
+          // Main Content
+          div(ui-view)
+

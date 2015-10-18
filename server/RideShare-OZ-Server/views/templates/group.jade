@@ -1,0 +1,65 @@
+.row(ng-controller='GroupCtrl')
+  .col-lg-12
+    rd-widget
+      rd-widget-header(icon='fa-tasks', title='Groups')
+        a(href="javascript:void(0)", ng-click="newGroup();") Create
+        
+      rd-widget-body(classes='medium no-padding')
+        .table-responsive
+          table.table.table-hove
+            tbody
+              tr(dir-paginate="group in groups | itemsPerPage: groupPageSize", current-page="groupCurrentPage", pagination-id="group", ng-click="setMemReq($index);", ng-class="{'info':$index==selectedIndex}")
+                td 
+                  span(editable-text='group.groupname', onbeforesave="checkData(1, $data)", onaftersave="update($index)") {{group.groupname}}
+                td 
+                  span(editable-text='group.group_location[0]', onbeforesave="checkData(2, $data)", onaftersave="update($index)") {{group.group_location[0]}}
+                td 
+                  span(editable-text='group.group_location[1]', onbeforesave="checkData(3, $data)", onaftersave="update($index)") {{group.group_location[1]}}
+                td
+                  span(editable-text='group.location', onaftersave="update($index)") {{group.location}}
+                td
+                  span(editable-text='group.introduction', onbeforesave="checkData(4, $data)", onaftersave="update($index)") {{group.introduction}}
+                td(ng-click="deleteGroup($index);",)
+                  span.text-danger(tooltip='Delete')
+                    i.fa.fa-times
+      rd-widget-footer
+        dir-pagination-controls(boundary-links="true", on-page-change="pageChangeHandler(newPageNumber)", template-url="templates/dirPaginationTpl", pagination-id="group")
+        .clearfix
+  .col-lg-6
+    rd-widget
+      rd-widget-header(icon='fa-tasks', title='Members')
+        //- a(href='#') Manage
+      rd-widget-body(classes='medium no-padding')
+        .table-responsive
+          table.table.table-striped
+            tbody
+              tr(dir-paginate="member in members | itemsPerPage: memberPageSize", current-page="memberCurrentPage", pagination-id="member") 
+                td {{member.username}}
+                td {{member.phone}}
+                td(ng-click="acptRejReq(3, member.username);",)
+                  span.text-danger(tooltip='Remove')
+                    i.fa.fa-times
+      rd-widget-footer
+        dir-pagination-controls(boundary-links="true", on-page-change="", template-url="templates/dirPaginationTpl", pagination-id="member")
+        .clearfix
+
+  .col-lg-6
+    rd-widget
+      rd-widget-header(icon='fa-tasks', title='Requests')
+        //- a(href='#') Manage
+      rd-widget-body(classes='medium no-padding')
+        .table-responsive
+          table.table.table-striped
+            tbody
+              tr(dir-paginate="request in requests | itemsPerPage: requestPageSize", current-page="requestCurrentPage", pagination-id="request")
+                td {{request.user.username}}
+                td {{request.requestDate}}
+                td(ng-click="acptRejReq(1, request.user.username);",)
+                  span.text-success(tooltip='Accept')
+                    i.fa.fa-check
+                td(ng-click="acptRejReq(2, request.user.username);",)
+                  span.text-danger(tooltip='Reject')
+                    i.fa.fa-times
+      rd-widget-footer
+        dir-pagination-controls(boundary-links="true", on-page-change="", template-url="templates/dirPaginationTpl", pagination-id="request")
+        .clearfix
