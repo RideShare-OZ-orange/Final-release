@@ -1,3 +1,0 @@
-This is a test!
-If you see this information, it means you succeed.
-changes
