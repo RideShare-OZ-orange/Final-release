@@ -78,13 +78,10 @@ public class PlaceAutoCompleteAdapter extends
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.auto_place_list, parent,
                 false);
-        PlaceAutoComplete place = new PlaceAutoComplete("0", "");
-        if (position < mResultList.size())
-        {
+        PlaceAutoComplete place =  new PlaceAutoComplete("0","");
+        if(position < mResultList.size()){
             place = mResultList.get(position);
-        }
-        else
-        {
+        }else{
             //do nothing
         }
 

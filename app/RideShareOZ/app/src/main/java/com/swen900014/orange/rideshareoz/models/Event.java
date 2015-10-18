@@ -45,37 +45,30 @@ public class Event implements Serializable
         this.eventLocation = location;
     }
 
-    public static Event getEvent(String Id)
-    {
+    public static Event getEvent(String Id){
         return allEvents.get(Id);
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public static ArrayList<Event> getAllEvents()
-    {
+    public static ArrayList<Event> getAllEvents(){
 
         ArrayList<Event> events = new ArrayList<Event>();
         events.addAll(allEvents.values());
         return events;
     }
 
-    public static void storeEvents(JSONArray eventsJsonArray)
-    {
+    public static void storeEvents(JSONArray eventsJsonArray){
 
         allEvents.clear();
-        for (int i = 0; i < eventsJsonArray.length(); i++)
-        {
+        for (int i = 0; i < eventsJsonArray.length(); i++){
 
-            try
-            {
+            try {
                 Event newEvent = new Event(eventsJsonArray.getJSONObject(i));
                 allEvents.put(newEvent.eventId, newEvent);
-            } catch (JSONException e)
-            {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
@@ -84,20 +77,18 @@ public class Event implements Serializable
     }
 
 
-    public static void loadEvents(final Activity activity)
-    {
+
+    public static void loadEvents(final Activity activity){
         StringRequest getRidesRequest = new StringRequest(Request.Method.GET,
-                Resources.GETALL_EVENT_URL, new Response.Listener<String>()
+                Resources.GETALL_EVENT_URL , new Response.Listener<String>()
         {
             @Override
             public void onResponse(String s)
             {
                 System.out.println("response: " + s);
-                try
-                {
+                try {
                     storeEvents(new JSONArray(s));
-                } catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -110,8 +101,7 @@ public class Event implements Serializable
 
                 System.out.println("Sending post failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();
@@ -126,8 +116,7 @@ public class Event implements Serializable
         MyRequestQueue.getInstance(activity).addToRequestQueue(getRidesRequest);
     }
 
-    public Event(JSONObject eventJson) throws JSONException
-    {
+    public Event(JSONObject eventJson) throws JSONException {
 
         JSONArray tempLocationArray;
 
@@ -141,29 +130,24 @@ public class Event implements Serializable
         this.start_time = DateFormatter.format(eventJson.getString("startTime"));
         this.end_time = DateFormatter.format(eventJson.getString("endTime"));
     }
-
     public String getEventId()
     {
         return eventId;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public Location getEventLocation()
-    {
+    public Location getEventLocation() {
         return eventLocation;
     }
 
-    public String getStart_time()
-    {
+    public String getStart_time() {
         return start_time;
     }
 
-    public String getEnd_time()
-    {
+    public String getEnd_time() {
         return end_time;
     }
 }

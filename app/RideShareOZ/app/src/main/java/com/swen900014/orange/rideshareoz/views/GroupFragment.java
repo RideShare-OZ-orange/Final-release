@@ -56,7 +56,7 @@ public class GroupFragment extends Fragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-
+        //inflater.inflate(R.menu.myridesfragment, menu);
     }
 
     @Override
@@ -126,6 +126,7 @@ public class GroupFragment extends Fragment
                 Map<String, String> params = new HashMap<>();
 
                 params.put("username", User.getCurrentUser().getUsername());
+                //params.put("token", MainActivity.getAuthToken(getActivity().getApplicationContext()));
 
                 return params;
             }

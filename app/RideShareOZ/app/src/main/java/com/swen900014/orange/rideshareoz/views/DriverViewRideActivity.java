@@ -63,7 +63,7 @@ public class DriverViewRideActivity extends AppCompatActivity
         thisActivity = this;
 
         // Get ride index from my Rides fragment
-        rideIndex = getIntent().getIntExtra("SelectedRide", 0);
+        rideIndex = (int) getIntent().getIntExtra("SelectedRide", 0);
         ride = Ride.allRides.get(rideIndex);
 
         TextView startLabel = (TextView) findViewById(R.id.startPointText);
@@ -82,7 +82,7 @@ public class DriverViewRideActivity extends AppCompatActivity
         startTimeLabel.setText(ride.getStartTime());
         arrivalTimeLabel.setText(ride.getArrivingTime());
         seatsText.setText(ride.getSeats());
-
+        
         SpannableString content = new SpannableString(ride.getDriver().getUsername());
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         driverText.setText(content);
@@ -114,21 +114,17 @@ public class DriverViewRideActivity extends AppCompatActivity
         waitingList.removeAllViews();
 
         // Display requesting users
-        if (ride.getRideState() == Ride.RideState.OFFERING)
-        {
-            for (final Pickup lift : waitingListArray)
-            {
+        if (ride.getRideState() == Ride.RideState.OFFERING) {
+            for (final Pickup lift : waitingListArray) {
                 TextView request = new TextView(this);
                 SpannableString content = new SpannableString(lift.getUser().getUsername());
                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                 request.setText(content);
                 request.setTextColor(Color.parseColor("#000080"));
 
-                request.setOnClickListener(new View.OnClickListener()
-                {
+                request.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v)
-                    {
+                    public void onClick(View v) {
                         Intent intent = new Intent(thisActivity, UserInfoActivity.class);
                         intent.putExtra("SelectedRide", rideIndex);
                         intent.putExtra("Pickup", lift);
@@ -220,8 +216,7 @@ public class DriverViewRideActivity extends AppCompatActivity
                 volleyError.printStackTrace();
                 System.out.println("Sending post failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();

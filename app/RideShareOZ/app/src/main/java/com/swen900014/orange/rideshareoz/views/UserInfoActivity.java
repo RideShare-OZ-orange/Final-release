@@ -58,7 +58,7 @@ public class UserInfoActivity extends AppCompatActivity
 
         // Display the pick up location of a passenger
         TextView startAddressText = (TextView) findViewById(R.id.startAddressText);
-        TextView startAddressLabel = (TextView) findViewById(R.id.startAddressLabel);
+        TextView startAddressLabel =  (TextView) findViewById(R.id.startAddressLabel);
 
         if (intent.hasExtra("Pickup"))
         {
@@ -221,8 +221,7 @@ public class UserInfoActivity extends AppCompatActivity
 
                 System.out.println("Sending accept failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();
@@ -257,8 +256,7 @@ public class UserInfoActivity extends AppCompatActivity
 
                 System.out.println("Sending reject failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();

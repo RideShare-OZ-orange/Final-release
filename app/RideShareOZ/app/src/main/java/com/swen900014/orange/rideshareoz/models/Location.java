@@ -12,7 +12,7 @@ public class Location implements Serializable
 {
     private Double lat;
     private Double lon;
-    private String address;
+    private String address = "dummy";
     private String suburb;
 
     /*
@@ -23,8 +23,7 @@ public class Location implements Serializable
     private String extractDisplayName(String address)
     {
         //fix the address retained from current location
-        if ((!address.contains(", VIC")) && (address.contains(" VIC")))
-        {
+        if ((!address.contains(", VIC")) && (address.contains(" VIC"))){
             address = address.replace(" VIC", ", VIC");
         }
 
@@ -54,6 +53,11 @@ public class Location implements Serializable
     {
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public Location(String address)
+    {
+        this.address = address;
     }
 
     public void setLat(Double lat)
@@ -100,4 +104,5 @@ public class Location implements Serializable
     {
         return displayName;
     }
+
 }

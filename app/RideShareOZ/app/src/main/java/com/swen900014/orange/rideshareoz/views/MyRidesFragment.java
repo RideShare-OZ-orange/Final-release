@@ -71,7 +71,7 @@ public class MyRidesFragment extends Fragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-
+        //inflater.inflate(R.menu.myridesfragment, menu);
     }
 
     @Override
@@ -154,27 +154,22 @@ public class MyRidesFragment extends Fragment
 
                 System.out.println("Sending post failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();
 
+                //params.put("username", User.getCurrentUser().getUsername());
                 params.put("token", MainActivity.getAuthToken(getActivity().getApplicationContext()));
-
-                if (isSearchResults)
-                {
+                if(isSearchResults){
                     params.put("origins", intent.getStringExtra("origin"));
-                    params.put("e_lat", intent.getStringExtra("e_lat"));
+                    params.put("e_lat",intent.getStringExtra("e_lat"));
                     params.put("e_lon", intent.getStringExtra("e_lon"));
                     params.put("arrival_time", intent.getStringExtra("arrival_time"));
-                    if (intent.getBooleanExtra("isGroup", true))
-                    {
+                    if(intent.getBooleanExtra("isGroup", true) ){
                         params.put("group_id", intent.getStringExtra("group_id"));
-                    }
-                    else
-                    {
-                        params.put("event_id", intent.getStringExtra("event_id"));
+                    }else {
+                        params.put("event_id" ,intent.getStringExtra("event_id"));
                     }
                 }
 

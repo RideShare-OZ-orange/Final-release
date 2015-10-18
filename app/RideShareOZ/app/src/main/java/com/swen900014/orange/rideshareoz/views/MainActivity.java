@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements
     private static boolean mIsResolving = false;
 
     /* Should we automatically resolve ConnectionResults when possible? */
-
     private boolean mShouldResolve = false;
     private Bundle savedInstanceState;
 
@@ -84,10 +83,7 @@ public class MainActivity extends AppCompatActivity implements
                 .addScope(new Scope(Scopes.PROFILE))
                 .build();
         mGoogleApiClient.connect();
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -201,9 +197,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onStart()
     {
         super.onStart();
-        //ReAuthentication is not required
-        //mGoogleApiClient.connect();
-
     }
 
     @Override
@@ -221,15 +214,12 @@ public class MainActivity extends AppCompatActivity implements
         {
             mGoogleApiClient.connect();
         }
-
     }
 
     @Override
     protected void onStop()
     {
         super.onStop();
-        //ReAuthentication is not required
-        //mGoogleApiClient.disconnect();
     }
 
     @Override
@@ -253,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements
         {
             onSignInClicked();
         }
-
     }
 
     public static void signOut()
@@ -323,7 +312,6 @@ public class MainActivity extends AppCompatActivity implements
 
         // Show the signed-in UI
         showSignedInUI();
-
     }
 
     private void showSignedInUI()
@@ -419,7 +407,6 @@ public class MainActivity extends AppCompatActivity implements
 
     public class SendUserID extends AsyncTask<String, Void, String>
     {
-
         private final String TAG = "SendID";
 
         @Override
@@ -443,7 +430,6 @@ public class MainActivity extends AppCompatActivity implements
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setDoInput(true);
                 urlConnection.setDoOutput(true);
-                //urlConnection.connect();
 
                 OutputStream os = urlConnection.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
@@ -452,9 +438,6 @@ public class MainActivity extends AppCompatActivity implements
                 writer.flush();
                 writer.close();
                 os.close();
-
-                //urlConnection.connect();
-
 
                 int responseCode = urlConnection.getResponseCode();
 
@@ -470,8 +453,6 @@ public class MainActivity extends AppCompatActivity implements
                 else
                 {
                     response = "";
-
-                    //throw new HttpException(responseCode+"");
                 }
                 return response;
             } catch (IOException e)

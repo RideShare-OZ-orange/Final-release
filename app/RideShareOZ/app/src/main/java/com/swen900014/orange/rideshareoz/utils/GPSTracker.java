@@ -70,7 +70,7 @@ public class GPSTracker extends Service implements LocationListener, android.loc
             isNetworkEnabled = locationManager
                     .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (!isGPSEnabled)
+            if (!isGPSEnabled )
             {
                 // no network provider is enabled
                 this.canGetLocation = false;
@@ -199,22 +199,22 @@ public class GPSTracker extends Service implements LocationListener, android.loc
         {
 
 
-            // TODO: Consider calling
-            //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
+                // TODO: Consider calling
+                //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
 
-            Toast.makeText(getApplicationContext(), "Missing ACCESS_FINE_LOCATION",
-                    Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Missing ACCESS_FINE_LOCATION",
+                        Toast.LENGTH_SHORT).show();
 
-            return;
+                return;
+            }
+
+            locationManager.removeUpdates(GPSTracker.this);
         }
-
-        locationManager.removeUpdates(GPSTracker.this);
-    }
 
 
     /**
@@ -270,11 +270,9 @@ public class GPSTracker extends Service implements LocationListener, android.loc
         alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
 
         // On pressing Settings button
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+           @Override
+            public void onClick(DialogInterface dialog, int which) {
                 GPSTracker.isCancelled = false;
 
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -284,12 +282,10 @@ public class GPSTracker extends Service implements LocationListener, android.loc
         });
 
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
-        {
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
 
                 GPSTracker.isCancelled = true;
 
@@ -339,8 +335,5 @@ public class GPSTracker extends Service implements LocationListener, android.loc
 
     }
 
-    public boolean getState()
-    {
-        return GPSTracker.isCancelled;
-    }
+    public boolean getState(){return GPSTracker.isCancelled;}
 }

@@ -112,8 +112,7 @@ public class ViewGroupActivity extends AppCompatActivity
 
                 System.out.println("Sending post failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();
@@ -149,8 +148,7 @@ public class ViewGroupActivity extends AppCompatActivity
                 volleyError.printStackTrace();
                 System.out.println("Sending post failed!");
             }
-        })
-        {
+        }){
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<>();

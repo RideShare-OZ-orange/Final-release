@@ -36,6 +36,7 @@ public class MyRidesActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Menu is not required for search
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -50,6 +51,7 @@ public class MyRidesActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings)
         {
+            //startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
